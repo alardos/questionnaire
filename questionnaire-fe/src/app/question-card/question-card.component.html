@@ -1,0 +1,52 @@
+<mat-card *ngIf="!edit">
+    <mat-card-header>
+        <mat-card-title>{{data.question}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field  class="full-width"  *ngIf="_type === 'text'">
+            <textarea [disabled]="review" [(ngModel)]="$any(data.answer).answer" cdkTextareaAutosize #autosize="cdkTextareaAutosize" matInput></textarea>
+        </mat-form-field>
+
+        <mat-selection-list [disabled]="review" [multiple]="false" *ngIf="_type === 'single'">
+            <mat-list-option [(selected)]="option.selected" *ngFor="let option of $any(this.data.answer).options"> {{option.value}} </mat-list-option>
+        </mat-selection-list>
+
+        <mat-selection-list [disabled]="review" *ngIf="_type === 'multi'">
+            <mat-list-option [(selected)]="option.selected" *ngFor="let option of $any(this.data.answer).options">{{option.value}}</mat-list-option>
+        </mat-selection-list>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="edit">
+    <button id="deleteQuestionButton" mat-icon-button (click)="deleteQuestion()"><mat-icon>delete</mat-icon></button>
+    <mat-card-header>
+        <mat-card-title class="full-width">
+            <mat-form-field class="full-width">
+                <mat-label>Question</mat-label>
+                <input [(ngModel)]="data.question" class="full-width" matInput>
+            </mat-form-field>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+        <mat-list *ngIf="_type === 'single'">
+            <mat-list-item *ngFor="let option of $any(this.data.answer).options">
+                <button mat-icon-button (click)="delete(option)"><mat-icon>delete</mat-icon></button>
+                {{option.value}}
+            </mat-list-item>
+            <mat-form-field class="full-width">
+                <mat-label>New Answer</mat-label>
+                <input [(ngModel)]="newAnswerValue" (keyup)="typing($event)" class="full-width" matInput>
+            </mat-form-field>
+        </mat-list>
+        <mat-list *ngIf="_type === 'multi'">
+            <mat-list-item *ngFor="let option of $any(this.data.answer).options">
+                <button mat-icon-button (click)="delete(option)"><mat-icon>delete</mat-icon></button>
+                {{option.value}}
+            </mat-list-item>
+            <mat-form-field class="full-width">
+                <mat-label>New Answer</mat-label>
+                <input [(ngModel)]="newAnswerValue" (keyup)="typing($event)" class="full-width" matInput>
+            </mat-form-field>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

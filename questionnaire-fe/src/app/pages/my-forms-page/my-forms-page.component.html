@@ -1,0 +1,7 @@
+<mat-nav-list id="app-nav" aria-label="Main navigation">
+  <a mat-list-item *ngFor="let form of forms" [routerLink]="['/fillout', form._id]">
+    <button mat-icon-button (click)="$event.preventDefault();delete(form)"><mat-icon>delete</mat-icon></button>
+    <button mat-icon-button (click)="$event.preventDefault();edit(form)"><mat-icon>edit</mat-icon></button>
+    <span mat-line>{{form.name}}</span>
+  </a>
+</mat-nav-list>

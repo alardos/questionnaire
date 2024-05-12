@@ -1,0 +1,2 @@
+<app-question-card *ngFor="let question of data?.questions" (answer)="answerChange($event)" [edit]="false" class="app-question-card" [data]="question"/>
+<button mat-raised-button (click)="submit()">Submit</button>

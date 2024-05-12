@@ -1,0 +1,13 @@
+<mat-form-field id="name">
+    <mat-label>Form name</mat-label>
+    <input [(ngModel)]="name" matInput>
+</mat-form-field>
+<div *ngFor="let question of questions" >
+  <app-question-card [edit]="true" (delete)="delete(question)"  class="app-question-card" [data]="question"/>
+</div>
+
+<button mat-raised-button (click)="addText()">Add Text Based Question</button>
+<button mat-raised-button (click)="addSingle()">Add Single Answer Question</button>
+<button mat-raised-button (click)="addMulti()">Add Multi Answer Question</button>
+<button mat-flat-button color="primary" (click)="save()">Save</button>
+

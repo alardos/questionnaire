@@ -1,0 +1,5 @@
+<mat-nav-list id="app-nav" aria-label="Main navigation">
+  <a mat-list-item *ngFor="let submit of submits" [routerLink]="['/review-submit/'+submit._id]" >
+    <span mat-line>{{submit.formDetails?.name}}</span>
+  </a>
+</mat-nav-list>

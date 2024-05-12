@@ -1,0 +1,5 @@
+<mat-nav-list id="app-nav" aria-label="Main navigation">
+  <a mat-list-item *ngFor="let form of forms" [routerLink]="['fillout', form._id]">
+    <span mat-line>{{form.name}}</span>
+  </a>
+</mat-nav-list>
